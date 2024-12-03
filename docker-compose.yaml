@@ -1,0 +1,20 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: ctf-mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_DATABASE: if674_ctf
+    ports:
+      - "3306:3306"  # Expose MySQL port on the host machine
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
+    driver: bridge
